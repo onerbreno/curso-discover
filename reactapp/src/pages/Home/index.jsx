@@ -15,6 +15,8 @@ export function Home() {
     // onChange={e => teste[1](e.target.value)}
     // />
 
+
+    // a convenção é desestruturar
     const [studentName, setStudentName] = useState('');
     const [students, setStudent] = useState([])
     const [user, setUser] = useState({ name: '', avatar: '' })
@@ -34,20 +36,36 @@ export function Home() {
         // ótimo exemplo de imutabilidade
     }
 
-    // é executado após a página ser renderizada ou após os elementos passados com argumentos para a função serem
-    // atualizados
-    useEffect(() => {
-        // usando useEffect para fazer uma requisição a uma API
-        fetch('https://api.github.com/users/onerbreno')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setUser({
-                    name: data.name,
-                    avatar: data.avatar_url
-                })
+    // usando useEffect para fazer uma requisição a uma API
+    useEffect(() => { // não é possível usar async diretamente no useEffect() 
+        // mas é possível utilizar funções assíncronas dentro dele
+
+        async function fetchData() { // a declaração da função poderia ser fora do useEffect
+            // por convenção, como essa função está relacionada ao useEffect ela pode ser declarada por aqui
+            const response = await fetch('https://api.github.com/users/onerbreno')
+            const data = await response.json()
+            console.log("DADOS ==> ", data)
+            setUser({
+                name: data.name,
+                avatar: data.avatar_url
             })
+        }
+        
+        fetchData() 
+
+        // fetch('https://api.github.com/users/onerbreno')
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         setUser({
+        //             name: data.name,
+        //             avatar: data.avatar_url
+        //         })
+        //     })
+
     }, [])
+    // useUffect() é executado após a página ser renderizada ou após os elementos passados como 
+    // segundo argumento para a função serem atualizados
 
     return (
         // <> elemento chamado fragment, dentro do return o conteúdo deve estar embrulhado
@@ -62,12 +80,14 @@ export function Home() {
                     <img src={user.avatar} alt="Foto de perfil" />
                 </div>
             </header>
+
             <input
                 type="text"
                 placeholder="Digite o nome..."
                 // em react os eventos são nomeados usando camelCase
                 onChange={e => setStudentName(e.target.value)}
             />
+
             <button type="button" onClick={handleAddStudent}>
                 Adicionar
             </button>
