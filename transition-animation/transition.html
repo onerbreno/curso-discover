@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* transition dependem de iteração do usuário */
+
+        body {
+            display: grid;
+            align-content: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .box-red {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+        }
+
+        .box-red {
+            background-color: red;
+            transition: all 1s ease 4s;
+            /* transition: background-color 1s ease 4s; */
+        }
+
+        .box-red:hover {
+            transition-duration: 1s;
+            width: 300px;
+            transition-property: background-color;
+            background-color: #ff0;
+            transition-timing-function: ease-in;
+
+            /* atrasa a animação em 4s */
+            transition-delay: 4s; 
+            
+            /* Transição com aceleração no início, suave no final */
+            /* transition-timing-function: ease-in; */
+            
+            /* transition-timing-function: ease; */
+            /* Transição suave no início e no final, aceleração no meio */
+
+            /* transition-timing-function: ease-in-out; */
+            /* Transição com aceleração no início, desaceleração no final */
+
+            /* transition-timing-function: ease-out; */
+            /* Transição suave no início, desaceleração no final */
+
+            /* transition-timing-function: linear; */
+            /* Transição linear constante */
+
+            /* transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+            /* Transição personalizada usando pontos de controle cúbicos */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-red"></div>
+</body>
+
+</html>

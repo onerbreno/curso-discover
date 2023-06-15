@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ball {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            background-color: #f00;
+            position: relative;
+
+            animation-name: example-two;
+            animation-duration: 1s;
+            animation-delay: 2s;
+            /* animation-iteration-count: 2; */
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        @keyframes example-one {
+            from {
+                background-color: blueviolet;
+            }
+
+            to {
+                background-color: rosybrown;
+            }
+        }
+
+        @keyframes example-two {
+            0% {
+                background-color: blueviolet;
+                top: 0;
+                left: 0;
+            }
+
+            25% {
+                background-color: rosybrown;
+                top: 0;
+                left: 600px;
+            }
+
+            50% {
+                background-color: blue;
+                top: 600px;
+                left: 600px;
+            }
+
+            75% {
+                background-color: yellow;
+                top: 600px;
+                left: 0px;
+            }
+
+            100% {
+                background-color: red;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .linear {
+            width: 100px;
+            height: 50px;
+            background-color: blueviolet;
+            position: relative;
+            animation-name: example-three;
+            animation-timing-function: linear;
+            /* animation-timing-function: ease;
+            animation-timing-function: ease-in;
+            animation-timing-function: ease-in-out;
+            animation-timing-function: ease-out; */
+            animation-duration: 2s;
+        }
+
+        @keyframes example-three {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: calc(100% - 100px);
+            }
+        }
+
+        .ball-fill {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            background-color: blueviolet;
+            position: relative;
+
+            animation-name: example-four;
+            animation-duration: 5s;
+            animation-delay: 2s;
+
+            /* Definição das propriedades de preenchimento da animação */
+            animation-fill-mode: both;
+            /* Preenchimento aplicado tanto antes como depois da execução da animação */
+
+            animation-fill-mode: forwards;
+            /* Preenchimento aplicado apenas após a conclusão da animação */
+            /* Propriedades aplicadas na última etapa da transição se mantém apó o término */
+
+            animation-fill-mode: backwards;
+            /* Preenchimento aplicado apenas antes do início da animação */
+
+        }
+
+        @keyframes example-four {
+            from {
+                left: 0;
+                background-color: aqua;
+            }
+
+            to {
+                left: calc(100% - 100px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="ball"></div>
+    <div class="linear"></div> -->
+    <div class="ball-fill"></div>
+
+
+</body>
+
+</html>
